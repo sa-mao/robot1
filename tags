@@ -5,7 +5,7 @@ Constants	/Users/personal/personal/projects/robotics/robot1/locomotion.py	/^from
 dd	/Users/personal/personal/projects/robotics/robot1/locomotion.py	/^    dd = DifferentialDrive(board, pins_mapping)$/;"	v	language:Python	class:DifferentialDrive
 default_speed	/Users/personal/personal/projects/robotics/robot1/locomotion.py	/^    default_speed = 244$/;"	v	language:Python	class:DifferentialDrive
 DifferentialDrive	/Users/personal/personal/projects/robotics/robot1/locomotion.py	/^class DifferentialDrive():$/;"	c	language:Python
-encoder_callback	/Users/personal/personal/projects/robotics/robot1/locomotion.py	/^def encoder_callback(data):$/;"	f	language:Python
+encoder_callback	/Users/personal/personal/projects/robotics/robot1/locomotion.py	/^    def encoder_callback(self, data):$/;"	m	language:Python	class:DifferentialDrive
 forward	/Users/personal/personal/projects/robotics/robot1/locomotion.py	/^    def forward(self, speed):$/;"	m	language:Python	class:DifferentialDrive
 left	/Users/personal/personal/projects/robotics/robot1/locomotion.py	/^    def left(self, speed):$/;"	m	language:Python	class:DifferentialDrive
 pins_mapping	/Users/personal/personal/projects/robotics/robot1/locomotion.py	/^    pins_mapping = {}$/;"	v	language:Python	class:DifferentialDrive

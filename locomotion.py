@@ -1,13 +1,11 @@
 from pymata_aio.pymata3 import PyMata3
 from pymata_aio.constants import Constants
 
-def encoder_callback(data):
-    print("called callback")
-    print(data)
-
 
 class DifferentialDrive():
     def __init__(self, board, pins_mapping):
+        self.total_left_ticks = 0
+        self.total_right_ticks = 0
         self.board = board
         self.pins_mapping = pins_mapping
         self.setup()
@@ -39,14 +37,19 @@ class DifferentialDrive():
                 Constants.DIGITAL,
                 encoder_callback
         )
-#        self.board.encoder_config(
-#                self.pins_mapping["L_ENCODER"],
-#                self.pins_mapping["R_ENCODER"],
-#                cb=encoder_callback,
-#                cb_type=Constants.CB_TYPE_DIRECT
-#        )
-        self.stop()
 
+        self.board.encoder_config(
+                self.pins_mapping["L_ENCODER"],
+                self.pins_mapping["R_ENCODER"],
+                cb=self.encoder_callback,
+                cb_type=Constants.CB_TYPE_DIRECT
+        )
+        self.stop()
+    def encoder_callback(self, data):
+        self.total_left_ticks += data[0]
+        self.total_right_ticks += data[1]
+        print(self.total_left_ticks)
+        
     def stop(self):
         print("Stop")
         digital_values = {
