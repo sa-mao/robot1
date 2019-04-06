@@ -27,12 +27,24 @@ class DifferentialDrive():
         for pin, mode in values.items():
             self.board.set_pin_mode(self.pins_mapping[pin], mode)
 
-        self.board.encoder_config(
+        self.board.set_pin_mode(
                 self.pins_mapping["L_ENCODER"],
-                self.pins_mapping["R_ENCODER"],
-                cb=encoder_callback,
-                cb_type=Constants.CB_TYPE_DIRECT
+                board.INPUT,
+                board.DIGITAL,
+                encoder_callback
         )
+        self.board.set_pin_mode(
+                self.pins_mapping["R_ENCODER"],
+                board.INPUT,
+                board.DIGITAL,
+                encoder_callback
+        )
+#        self.board.encoder_config(
+#                self.pins_mapping["L_ENCODER"],
+#                self.pins_mapping["R_ENCODER"],
+#                cb=encoder_callback,
+#                cb_type=Constants.CB_TYPE_DIRECT
+#        )
         self.stop()
 
     def stop(self):
@@ -127,12 +139,12 @@ if __name__ == "__main__":
     pins_mapping["L_CTRL_1"] = 5
     pins_mapping["L_CTRL_2"] = 4
     pins_mapping["PWM_L"] = 9
-    pins_mapping["L_ENCODER"] = 14
+    pins_mapping["L_ENCODER"] = 2
 
     pins_mapping["R_CTRL_1"] = 6
     pins_mapping["R_CTRL_2"] = 7
     pins_mapping["PWM_R"] = 10
-    pins_mapping["R_ENCODER"] = 15
+    pins_mapping["R_ENCODER"] = 3
 
     board = PyMata3()
     default_speed = 244
