@@ -33,8 +33,8 @@ class DifferentialDrive():
         )
         self.stop()
     def encoder_callback(self, data):
-        self.total_left_ticks += data[0]
-        self.total_right_ticks += data[1]
+        self.total_left_ticks += -data[0]
+        self.total_right_ticks += -data[1]
         print(self.total_left_ticks)
         
     def stop(self):
