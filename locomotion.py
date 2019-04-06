@@ -25,7 +25,7 @@ class DifferentialDrive():
         self.board.encoder_config(
                 self.pins_mapping["L_ENCODER"],
                 self.pins_mapping["R_ENCODER"],
-                cb=self.encoder_callback,
+                cb=encoder_callback,
                 cb_type=Constants.CB_TYPE_DIRECT
         )
         self.stop()
@@ -116,8 +116,8 @@ class DifferentialDrive():
         for k, v in analog_values.items():
             self.board.analog_write(self.pins_mapping[k], v)      
 
-    def encoder_callback(self, data):
-        print(data)
+def encoder_callback(data):
+    print(data)
 
 if __name__ == "__main__":
     # RedBot motor pins from RedBot.h
