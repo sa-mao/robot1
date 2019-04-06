@@ -22,6 +22,12 @@ class DifferentialDrive():
         
         for pin, mode in values.items():
             self.board.set_pin_mode(self.pins_mapping[pin], mode)
+        self.board.encoder_config(
+                self.pins_mapping["L_ENCODER"],
+                self.pins_mapping["R_ENCODER"],
+                cb=self.encoder_callback,
+                cb_type=Constants.CB_TYPE_DIRECT
+        )
         self.stop()
 
     def stop(self):
@@ -110,16 +116,21 @@ class DifferentialDrive():
         for k, v in analog_values.items():
             self.board.analog_write(self.pins_mapping[k], v)      
 
+    def encoder_callback(self, data):
+        print(data)
+
 if __name__ == "__main__":
     # RedBot motor pins from RedBot.h
     pins_mapping = {}
     pins_mapping["L_CTRL_1"] = 5
     pins_mapping["L_CTRL_2"] = 4
     pins_mapping["PWM_L"] = 9
+    pins_mapping["L_ENCODER"] = 3 
 
     pins_mapping["R_CTRL_1"] = 6
     pins_mapping["R_CTRL_2"] = 7
-    pins_mapping["PWM_R"] = 10 
+    pins_mapping["PWM_R"] = 10
+    pins_mapping["R_ENCODER"] = 2
 
     board = PyMata3()
     default_speed = 244
