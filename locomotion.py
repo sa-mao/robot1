@@ -1,6 +1,10 @@
 from pymata_aio.pymata3 import PyMata3
 from pymata_aio.constants import Constants
 
+def encoder_callback(data):
+    print("called callback")
+    print(data)
+
 
 class DifferentialDrive():
     def __init__(self, board, pins_mapping):
@@ -115,9 +119,6 @@ class DifferentialDrive():
             self.board.digital_write(self.pins_mapping[k], v)
         for k, v in analog_values.items():
             self.board.analog_write(self.pins_mapping[k], v)      
-
-def encoder_callback(data):
-    print(data)
 
 if __name__ == "__main__":
     # RedBot motor pins from RedBot.h

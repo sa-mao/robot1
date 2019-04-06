@@ -1,0 +1,16 @@
+!_TAG_FILE_SORTED	2	/0=unsorted, 1=sorted, 2=foldcase/
+backward	/Users/personal/personal/projects/robotics/robot1/locomotion.py	/^    def backward(self, speed):$/;"	m	language:Python	class:DifferentialDrive
+board	/Users/personal/personal/projects/robotics/robot1/locomotion.py	/^    board = PyMata3()$/;"	v	language:Python	class:DifferentialDrive
+Constants	/Users/personal/personal/projects/robotics/robot1/locomotion.py	/^from pymata_aio.constants import Constants$/;"	i	language:Python
+dd	/Users/personal/personal/projects/robotics/robot1/locomotion.py	/^    dd = DifferentialDrive(board, pins_mapping)$/;"	v	language:Python	class:DifferentialDrive
+default_speed	/Users/personal/personal/projects/robotics/robot1/locomotion.py	/^    default_speed = 244$/;"	v	language:Python	class:DifferentialDrive
+DifferentialDrive	/Users/personal/personal/projects/robotics/robot1/locomotion.py	/^class DifferentialDrive():$/;"	c	language:Python
+encoder_callback	/Users/personal/personal/projects/robotics/robot1/locomotion.py	/^def encoder_callback(data):$/;"	f	language:Python
+forward	/Users/personal/personal/projects/robotics/robot1/locomotion.py	/^    def forward(self, speed):$/;"	m	language:Python	class:DifferentialDrive
+left	/Users/personal/personal/projects/robotics/robot1/locomotion.py	/^    def left(self, speed):$/;"	m	language:Python	class:DifferentialDrive
+pins_mapping	/Users/personal/personal/projects/robotics/robot1/locomotion.py	/^    pins_mapping = {}$/;"	v	language:Python	class:DifferentialDrive
+PyMata3	/Users/personal/personal/projects/robotics/robot1/locomotion.py	/^from pymata_aio.pymata3 import PyMata3$/;"	i	language:Python
+right	/Users/personal/personal/projects/robotics/robot1/locomotion.py	/^    def right(self, speed):$/;"	m	language:Python	class:DifferentialDrive
+setup	/Users/personal/personal/projects/robotics/robot1/locomotion.py	/^    def setup(self):$/;"	m	language:Python	class:DifferentialDrive
+stop	/Users/personal/personal/projects/robotics/robot1/locomotion.py	/^    def stop(self):$/;"	m	language:Python	class:DifferentialDrive
+__init__	/Users/personal/personal/projects/robotics/robot1/locomotion.py	/^    def __init__(self, board, pins_mapping):$/;"	m	language:Python	class:DifferentialDrive
