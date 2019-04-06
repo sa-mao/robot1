@@ -25,19 +25,6 @@ class DifferentialDrive():
         for pin, mode in values.items():
             self.board.set_pin_mode(self.pins_mapping[pin], mode)
 
-        self.board.set_pin_mode(
-                self.pins_mapping["L_ENCODER"],
-                Constants.INPUT,
-                Constants.DIGITAL,
-                encoder_callback
-        )
-        self.board.set_pin_mode(
-                self.pins_mapping["R_ENCODER"],
-                Constants.INPUT,
-                Constants.DIGITAL,
-                encoder_callback
-        )
-
         self.board.encoder_config(
                 self.pins_mapping["L_ENCODER"],
                 self.pins_mapping["R_ENCODER"],
