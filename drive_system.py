@@ -57,7 +57,7 @@ class DifferentialDrive():
                 callback=self._encoder_callback,
                 cb_type=Constants.CB_TYPE_DIRECT
         )
-         self.board.set_pin_mode(
+        self.board.set_pin_mode(
                 self.pins_mapping["R_ENCODER"],
                 Constants.INPUT,
                 callback=self._encoder_callback,
@@ -75,17 +75,17 @@ class DifferentialDrive():
     def transfer_function(self, Il, Ir):
         if len(Il) != len(Ir):
             raise ValueError("Left input size should be equal to right input size %d != %d" % (len(Il), len(Ir)))
-
-        Ol = np.array()
-        Or = np.array()
+        self.set_forward()
+        Ol = []
+        Or = []
         
         for i in range(len(Il)):
             self.total_left_ticks = 0
             self.total_right_ticks = 0
 
             analog_values = {
-                "PWM_L": Il[i],
-                "PWM_R": Ir[i]
+                "PWM_L": int(Il[i]),
+                "PWM_R": int(Ir[i])
             }
             for k, v in analog_values.items():
                 self.board.analog_write(self.pins_mapping[k], v)
@@ -196,12 +196,12 @@ if __name__ == "__main__":
     pins_mapping["R_ENCODER"] = 3
 
     board = PyMata3()
-    default_speed = 100
+    default_speed = 200
     dd = DifferentialDrive(board, pins_mapping)
-    Il = np.concatenate([np.zeros(10), np.ones(990)* default_speed])
-    Ir = np.concatenate([np.zeros(10), np.ones(990)* default_speed])
+    Il = np.concatenate([np.zeros(100), np.ones(9900)* default_speed])
+    Ir = np.concatenate([np.zeros(100), np.ones(9900)* default_speed])
 
-    Ol, Or = dd.transfer_function(self, Il, Ir)
+    Ol, Or = dd.transfer_function( Il, Ir)
     from matplotlib import pyplot as plt
     f, (ax1, ax2) = plt.subplots(1, 2, sharey=True)
     ax1.plot(Il)
